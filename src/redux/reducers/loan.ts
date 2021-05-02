@@ -1,17 +1,24 @@
 import * as actionTypes from "../actionTypes"
 import { LoanAction } from '../actions/loanAction'
-import { ILoan } from '../../interfaces/loan';
+import ILoan from '../../interfaces/loan';
+
+const loan: ILoan = {
+  id: 2,
+  amount: 20000,
+  nextPayment: 415.00,
+  nextPaymentDate: new Date().toDateString(),
+  autoPay: false,
+  remainingBalance: 19585,
+  remainingPayments: 39,
+};
 
 export interface LoanState {
   loan: ILoan
 }
 
 const initialState: LoanState = {
-  loan: {
-    id: 1,
-    amount: 100
-  }
-}
+  loan
+};
 
 const reducer = (
   state: LoanState = initialState,
@@ -22,7 +29,13 @@ const reducer = (
       const newLoan: ILoan = {
         id: action.payload.id,
         amount: action.payload.amount,
-      }
+        nextPayment: action.payload.nextPayment,
+        nextPaymentDate: action.payload.nextPaymentDate,
+        autoPay: action.payload.autoPay,
+        remainingBalance: action.payload.remainingBalance,
+        remainingPayments: action.payload.remainingPayments,
+      };
+
       return {
         ...state,
         loan: newLoan,

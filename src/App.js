@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom';
 
 import { Layout } from 'components/common';
-import Dashboard from 'pages/dashboard';
+//import Dashboard from 'pages/dashboard';
+import Main from 'pages/main';
 
 import 'styles/main.css';
 
@@ -16,7 +17,7 @@ function App() {
         <Switch>
           <Route path="/">
             <Layout>
-              <Dashboard />
+              <Main />
             </Layout>
          </Route>
         </Switch>
