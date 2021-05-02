@@ -1,25 +1,18 @@
-import React, { FC } from 'react';
-import { useField, FieldInputProps } from 'formik';
+import { useField } from 'formik';
 
-import IProps from 'interfaces/iprops'
 
-interface MyRadioProps extends FieldInputProps<""> {
-  label: string,
-}
-
-const TextInput: FC<MyRadioProps> = ({ id, name, label, ...props}) => {
+const TextInput = (props : any) => {
   const [field, meta] = useField(props)
   const hasError = Boolean(meta.touched && meta.error)
 
   return (
     <div className="sm:col-span-4">
       <label htmlFor={props.id || props.name} className="block text-sm font-medium text-gray-700">
-        {label}
+        {props.label}
       </label>
       <div className="mt-1">
         <input
           type="text"
-          name={props.name}
           id={props.id || props.name}
           {...field}
           {...props}

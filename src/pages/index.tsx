@@ -1,9 +1,6 @@
 import { useState } from 'react'
-import Link from 'next/link'
-import { Button as SharedButton } from '@truenorth-tech/shared'
-import { Layout } from '@/components/common'
-import { SignIn } from '@/components/auth/SignIn'
-import SignInModal from '@/components/auth/SignInModal'
+import Link from 'components/common/Link'
+import { Layout } from 'components/common'
 
 export default function Page() {
   const [showSignInModal, setShowSignInModal] = useState(false)
@@ -21,7 +18,7 @@ export default function Page() {
               </p>
               <Link href="/examples/open-account">
                 {/* PoC: This component is used in two different /apps [dashboard, portal] */}
-                <SharedButton onClick={() => setShowSignInModal(true)} label="Open Account" />
+                <button onClick={() => setShowSignInModal(true)} value="Open Account" />
               </Link>
             </div>
           </div>
@@ -32,13 +29,13 @@ export default function Page() {
           <div className="p-4 sm:p-6 md:px-16 md:py-32">
             <div className="max-w-sm mx-auto">
               <h2 className="text-center text-3xl font-extrabold">Apply for your Account</h2>
-              <SignIn />
+              {/* <SignIn /> */}
             </div>
           </div>
         </section>
       </div>
 
-      {showSignInModal && <SignInModal onClose={() => setShowSignInModal(false)} onSubmit={() => Promise.resolve()} />}
+      {/* {showSignInModal && <SignInModal onClose={() => setShowSignInModal(false)} onSubmit={() => Promise.resolve()} />} */}
     </>
   )
 }

@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 
 import { Container } from 'components/ui'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
+import TextInput from 'components/common/TextInput';
 
 const ValidationSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -451,7 +452,6 @@ export default () => {
                     </div>
                   </form>
                   <Formik
-                    autoComplete="off"
                     initialValues={{
                       firstName: '',
                       lastName: '',
@@ -478,7 +478,7 @@ export default () => {
                       </Form>
                     )}
                   </Formik>
-                  <div p="8" ml="8">
+                  <div>
                     {JSON.stringify(data, null, 2)}
                   </div>
                 </div>
