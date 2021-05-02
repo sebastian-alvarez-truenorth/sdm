@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { classNames } from 'utils'
 
-interface Props {
+import { classNames } from 'utils'
+import IProps from 'interfaces/iprops';
+
+interface Props extends IProps {
   className?: string
-  children?: any
   el?: HTMLElement
   clean?: boolean
 }
