@@ -10,7 +10,9 @@ const reducer = (
   action: Action<LoanState>
 ): LoanState => {
   switch (action.type) {
-    case actionTypes.GET_LOANS: {
+    case actionTypes.GET_LOANS:
+    case actionTypes.SET_SELECTED_LOAN:
+    case actionTypes.SET_LOAN_AUTOPAY_STATUS:{
       const newState: LoanState = { loans: action.payload.loans }
       return {
         ...state,

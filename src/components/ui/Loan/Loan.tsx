@@ -1,9 +1,16 @@
 import { useState, FC } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import IProps from 'interfaces/iprops';
 import ILoan from 'interfaces/loan';
 
+import { SwitchButton } from 'components/common';
+import { setAutopay } from 'redux/actions/loan-actions';
+
 import ServicingDashboardSDK from 'lib/sdk';
+import { getSelectedLoan } from 'redux/selectors/loans';
+
 const sdk = ServicingDashboardSDK();
 
 interface Props extends IProps {
@@ -11,25 +18,26 @@ interface Props extends IProps {
 };
 
 const Loan: FC<Props> = ({ data }) => {
-  const [autoPay, setAutopay] = useState(data.autoPay);
+  const [loan] = useState<ILoan>(data);
+  const dispatch = useDispatch();
 
   const setLoanAutoPay = () => {
     const setAutopayStatus = async () => {
-      const updatedLoan = await sdk.Loan.setAutopay(!autoPay);
-      setAutopay(updatedLoan.autoPay);
+      dispatch(setAutopay(loan.id, !loan.autoPay));
     };
 
     setAutopayStatus();
   };
 
   return (
-    <div className="border-2 flex items-center justify-between p-2">
-      <div>${ data.amount }</div>
-      <div className="flex items-center">
-        <button className="mr-8 border-2 bg-white shadow-md p-4" onClick={setLoanAutoPay}>Set Autopay</button>
-        <p className="text-center" style={{minWidth: '150px' }}>AutoPay: { autoPay ? 'Enabled' : 'Disabled' }</p>
+    <Link to="/dashboard">
+      <div className="border-2 flex items-center justify-between p-2">
+        <div>${ data.amount }</div>
+        <div className="flex items-center py-4">
+          <SwitchButton enabled={loan.autoPay} onChange={setLoanAutoPay} title={"Set Autopay"} titleDetail={loan.autoPay ? '(Enabled)' : '(Disabled)'}/>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

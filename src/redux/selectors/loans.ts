@@ -1,5 +1,7 @@
 import { ILoan } from 'interfaces';
 
-export const getLoanState = (state: any): LoanState => state && state.loan;
+export const getLoanState = (state: StateType): LoanState => state && state.loan;
 
-export const getAllLoans = (state: any): ILoan[] => getLoanState(state).loans;
+export const getAllLoans = (state: StateType): ILoan[] => getLoanState(state).loans || [];
+
+export const getSelectedLoan = (state: StateType): ILoan => getLoanState(state).selectedLoan;
