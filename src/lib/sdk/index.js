@@ -14,7 +14,7 @@ import config from './config';
 
 const ServicingDashboardSDK = () => {
   const transports = {
-    rest: rest({ baseURL: config.baseURL })
+    rest: rest(config)
   };
 
   const instance = {

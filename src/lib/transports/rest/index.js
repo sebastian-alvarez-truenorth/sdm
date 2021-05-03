@@ -3,6 +3,8 @@ import axios from 'axios';
 import get from './get';
 import post from './post';
 
+import registerMock from './mock';
+
 const generateHeaders = ({
   type = 'application/json'
 } = {}) => {
@@ -16,12 +18,16 @@ const generateHeaders = ({
   return headers;
 };
 
-export default ({ baseURL }) => {
-  const core = axios.create({
+export default ({ baseURL, isMock = false } = {}) => {
+  const coreConfig = {
     baseURL,
     headers: generateHeaders(),
     mode: 'cors',
-  });
+  };
+
+  const core = axios.create(coreConfig);
+
+  if (isMock) registerMock(core);
 
   return ({
     rawCall: (config) => core(config),
