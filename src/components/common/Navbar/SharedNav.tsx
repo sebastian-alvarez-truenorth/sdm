@@ -3,10 +3,10 @@ import Link from 'components/common/Link'
 import { classNames } from 'utils'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: true },
-  { name: 'Sidebar Page', href: '/examples/page', current: false },
-  { name: 'Dynamic List', href: '/examples/list', current: false },
-  { name: 'Testing Form', href: '/examples/form', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: window.location.href.match('dashboard') },
+  { name: 'Sidebar Page', href: '/examples/page', current: window.location.href.match('examples/page') },
+  { name: 'Dynamic List', href: '/examples/list', current: window.location.href.match('examples/list') },
+  { name: 'Testing Form', href: '/examples/form', current: window.location.href.match('examples/form') },
 ]
 
 const SharedNav: FC = () => {

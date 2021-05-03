@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { RadioGroup, Switch } from '@headlessui/react'
 import { QuestionMarkCircleIcon, ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid'
 import { classNames } from 'utils'
 import { PrivateLayout } from 'components/common'
 import { Container } from 'components/ui'
+import { getLoan } from 'redux/actions'
 
 const stats = [
   { name: 'Total Subscribers', stat: '71,897', previousStat: '70,946', change: '12%', changeType: 'increase' },

@@ -1,28 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container, LoansList, Borrower } from 'components/ui';
 import ILoan from 'interfaces/loan';
 import IBorrower from 'interfaces/borrower';
 
-import ServicingDashboardSDK from 'lib/sdk';
-const sdk = ServicingDashboardSDK();
-
-type Requests = [Promise<ILoan []>, Promise<IBorrower>];
+import { getLoans, getMe } from 'redux/actions';
+import { getAllLoans } from 'redux/selectors/loans';
+import { getMyData } from 'redux/selectors/borrower';
 
 const Main = () => {
-  const [loans, setLoans] = useState<ILoan[]>([]);
-  const [borrower, setBorrower] = useState<IBorrower>();
-
+  const loans: ILoan[] = useSelector(getAllLoans);
+  const borrower: IBorrower = useSelector(getMyData);
+  const dispatch = useDispatch();
   const isReady = loans.length && borrower;
 
   useEffect(() => {
     const getInitialInfo = async () => {
 
-      const requests: Requests = [sdk.Loan.getAll(), sdk.Borrower.me()];
-      const [loans, me] = await Promise.all(requests);
-
-      setLoans(loans);
-      setBorrower(me);
+      await dispatch(getLoans(1));
+      await dispatch(getMe(1));
     };
 
     getInitialInfo();
@@ -31,7 +28,7 @@ const Main = () => {
   if (!isReady) return null;
 
   return (
-    <Container className="py-12">
+    <Container className="max-w-7xl py-12">
       <section>
         <h3 className="text-lg leading-6 font-medium text-gray-900">My Info</h3>
         <Borrower info={borrower} />

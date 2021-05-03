@@ -32,7 +32,7 @@ const navItems = [
 
 const Sidebar: FC = () => {
   return (
-    <nav className="sticky top-8">
+    <nav className="sticky top-8 px-4 sm:px-6 lg:px-8 py-12">
       <div className="space-y-1">
         {navItems.map((item) => (
           <Link key={item.name} href={item.href}>

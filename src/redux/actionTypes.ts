@@ -1,1 +1,5 @@
-export const GET_LOAN = "GET_LOAN"
+// LOANS ACTIONS
+export const GET_LOANS = "GET_LOANS"
+
+// BORROWER ACTIONS
+export const GET_ME = "GET_ME"
