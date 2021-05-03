@@ -1,16 +1,14 @@
-import { FC } from 'react';
+import { useSelector } from 'react-redux';
 
-import IProps from 'interfaces/iprops';
 import IBorrower from 'interfaces/borrower';
+import { getMyData } from 'redux/selectors/borrower';
 
-interface Props extends IProps {
-  info: IBorrower
-};
+const Borrower = () => {
+  const borrower: IBorrower = useSelector(getMyData);
 
-const Borrower: FC<Props> = ({ info }) => {
   return (
     <div>
-      Welcome, { info.firstName }
+      Welcome, { borrower.firstName }
     </div>
   );
 };

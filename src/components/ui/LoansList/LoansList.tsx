@@ -1,15 +1,13 @@
-import { FC } from 'react';
+import { useSelector } from 'react-redux';
 
-import IProps from 'interfaces/iprops';
 import ILoan from 'interfaces/loan';
+import { getAllLoans } from 'redux/selectors/loans';
 
 import Loan from 'components/ui/Loan';
 
-interface Props extends IProps {
-  loans: ILoan[]
-};
+const LoansList = () => {
+  const loans: ILoan[] = useSelector(getAllLoans);
 
-const LoansList: FC<Props> = ({ loans }) => {
   return (
     <div>
       {

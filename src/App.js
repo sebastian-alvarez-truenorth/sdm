@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Routes from "routes";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Routes from 'routes';
 
-import { Provider } from "react-redux";
-import store from "redux/store";
+import { Provider } from 'react-redux';
+import store from 'redux/store';
 
-import "styles/main.css";
+import 'styles/main.css';
 
 function App() {
   return (

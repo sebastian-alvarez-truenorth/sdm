@@ -1,9 +1,9 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { Layout, PrivateLayout } from "components/common";
-import Dashboard from "pages/dashboard";
-import { Page, List, Form } from "pages/examples";
-import Main from "pages/main";
+import { Switch, Route } from 'react-router-dom';
+
+import { Layout, PrivateLayout } from 'components/common';
+import Dashboard from 'pages/dashboard';
+import { Page, List, Form } from 'pages/examples';
+import Main from 'pages/main';
 
 const Routes = () => {
   return (
